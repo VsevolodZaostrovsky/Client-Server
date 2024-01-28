@@ -1,0 +1,19 @@
+#
+# Запускать
+# /bin/bash ./make_db
+
+awk '
+BEGIN {
+    ndevices = 10000;
+    for(k = 0; k < ndevices; k++) {
+        printf("NAME: D_%s\nQuant: %s\n", k, int(100*rand()));
+        if(rand() > 0.5) {
+            for(parent = 0; parent < 8; parent++) {
+                device = int(ndevices * rand());
+                quantity = int(rand() * 10);
+                if(device < k)
+                    printf("D_%d %d\n", device, quantity);
+            }
+        }
+    }
+ }' /dev/null

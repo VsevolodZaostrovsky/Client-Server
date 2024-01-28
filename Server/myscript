@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "script started"
+g++ client.cpp -o cli
+valgrind ./cli <scenario.txt
